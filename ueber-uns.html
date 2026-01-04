@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns | P&N Gebäudeservice - Unsere Geschichte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold:#D4AF37; --gold-dark:#B8941F; --dark:#1a1a1a; --gray:#333; --light:#F5F5F5; }
+        body { font-family:'Inter',sans-serif; color:var(--gray); line-height:1.6; }
+        
+        /* Header copy from index */
+        header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); box-shadow:0 2px 30px rgba(0,0,0,0.1); z-index:1000; }
+        nav { max-width:1600px; margin:0 auto; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { display:flex; align-items:center; gap:1rem; }
+        .logo-shield { width:50px; height:60px; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--dark); }
+        .logo-text { font-size:1.5rem; font-weight:900; color:var(--dark); }
+        .logo-subtitle { font-size:0.75rem; color:var(--gold); font-weight:600; text-transform:uppercase; }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--gray); font-weight:600; transition:color 0.3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .cta-header { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:0.9rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; }
+        
+        /* Hero */
+        .hero-page { margin-top:90px; padding:6rem 3rem 4rem; background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); text-align:center; color:#fff; }
+        .hero-page h1 { font-size:4rem; font-weight:900; margin-bottom:1.5rem; }
+        .hero-page p { font-size:1.5rem; color:rgba(255,255,255,0.8); max-width:800px; margin:0 auto; }
+        
+        /* Story */
+        .story { padding:8rem 3rem; max-width:1200px; margin:0 auto; }
+        .story-block { margin-bottom:5rem; }
+        .story-block h2 { font-size:2.5rem; font-weight:800; color:var(--dark); margin-bottom:1.5rem; }
+        .story-block h3 { font-size:1.8rem; font-weight:700; color:var(--gold); margin:2rem 0 1rem; }
+        .story-block p { font-size:1.2rem; line-height:1.9; color:var(--gray); margin-bottom:1.5rem; }
+        .highlight-box { background:var(--light); border-left:4px solid var(--gold); padding:2.5rem; border-radius:15px; margin:3rem 0; }
+        .highlight-box h3 { margin-top:0; }
+        
+        /* Values */
+        .values { padding:8rem 3rem; background:var(--light); }
+        .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; max-width:1400px; margin:3rem auto 0; }
+        .value-card { background:#fff; padding:3rem; border-radius:20px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.08); }
+        .value-icon { font-size:4rem; margin-bottom:1.5rem; }
+        .value-card h3 { font-size:1.5rem; color:var(--dark); margin-bottom:1rem; }
+        .value-card p { color:var(--gray); line-height:1.8; }
+        
+        /* Footer copy */
+        footer { background:var(--dark); color:rgba(255,255,255,0.8); padding:5rem 3rem 2rem; }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+        .footer-section h3 { color:var(--gold); margin-bottom:1.5rem; }
+        .footer-section ul { list-style:none; }
+        .footer-section ul li { margin-bottom:0.8rem; }
+        .footer-section a { color:rgba(255,255,255,0.8); text-decoration:none; }
+        .footer-section a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:rgba(255,255,255,0.6); font-size:0.9rem; }
+        .footer-bottom a { color:rgba(255,255,255,0.6); text-decoration:none; margin:0 1rem; }
+        
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .hero-page h1 { font-size:2.5rem; }
+            .values-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-shield">P&N</div>
+                <div>
+                    <div class="logo-text">P&N GEBÄUDESERVICE</div>
+                    <div class="logo-subtitle">Premium Facility Management</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="leistungen.html">Leistungen</a></li>
+                <li><a href="preise.html">Preise</a></li>
+                <li><a href="ueber-uns.html">Über uns</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="angebot.html" class="cta-header">Angebot anfragen</a>
+        </nav>
+    </header>
+
+    <section class="hero-page">
+        <h1>Mehr als nur ein Dienstleister</h1>
+        <p>Die Geschichte von P&N - Von 300 Euro und einem Akkuschere zu einem zertifizierten Unternehmen</p>
+    </section>
+
+    <section class="story">
+        <div class="story-block">
+            <h2>Wie alles begann</h2>
+            <p>Paul Zuga gründete P&N Garten und Reinigung nicht im klassischen Sinne mit großem Startkapital oder Investoren. Es begann mit <strong>300 Euro, einer elektrischen Heckenschere und dem festen Willen, ehrliche Arbeit zu fairen Preisen anzubieten.</strong></p>
+            
+            <p>Was als kleine Nebentätigkeit begann, entwickelte sich durch Mundpropaganda, Zuverlässigkeit und Qualitätsarbeit zu einem vollwertigen Unternehmen. Jeder zufriedene Kunde empfahl uns weiter. Jedes erfolgreich abgeschlossene Projekt führte zum nächsten.</p>
+            
+            <div class="highlight-box">
+                <h3>💡 Die Philosophie war einfach:</h3>
+                <p><strong>"Arbeite so, als wäre es dein eigenes Haus. Kalkuliere fair. Halte dein Wort."</strong></p>
+                <p>Diese Prinzipien gelten heute noch - unabhängig von der Projektgröße.</p>
+            </div>
+        </div>
+
+        <div class="story-block">
+            <h2>Der Weg zum professionellen Unternehmen</h2>
+            
+            <h3>Vom Einzelkämpfer zum zertifizierten Dienstleister</h3>
+            <p>Mit wachsender Nachfrage wurde schnell klar: Professionelle Kunden brauchen professionelle Partner. Deshalb holten wir uns die <strong>offizielle Erlaubnis der Handwerkskammer Frankfurt-Rhein-Main</strong> und registrierten das Gewerbe als <strong>Einzelunternehmen</strong>.</p>
+            
+            <h3>Versicherung & Rechtssicherheit</h3>
+            <p>Ihre Sicherheit ist unsere Priorität. Wir haben eine <strong>Betriebshaftpflichtversicherung</strong> abgeschlossen, die Sie und Ihr Eigentum schützt. Bei uns gehen Sie kein Risiko ein.</p>
+            
+            <h3>Transparenz in der Kalkulation</h3>
+            <p>Wir haben ein System entwickelt, bei dem <strong>jedes Projekt individuell kalkuliert wird</strong> - keine versteckten Kosten, keine Überraschungen. Materialien werden auf Vertragsbasis und Vorabrechnung bezahlt. Sie wissen immer genau, wofür Sie bezahlen.</p>
+        </div>
+
+        <div class="story-block">
+            <h2>Warum Kunden uns treu bleiben</h2>
+            
+            <h3>Direkter Draht zum Inhaber</h3>
+            <p>Bei P&N sprechen Sie direkt mit Paul Zuga - kein Callcenter, keine endlosen Warteschleifen. Sie haben eine Frage? Sie bekommen eine Antwort innerhalb von 24 Stunden. Garantiert.</p>
+            
+            <h3>Ehrlichkeit vor Profit</h3>
+            <p>Wir empfehlen nur das, was wirklich nötig ist. Wenn ein Kunde uns bittet, etwas zu tun, das wir für unnötig halten, sagen wir das offen. <strong>Langfristige Beziehungen sind wichtiger als einmalige Gewinne.</strong></p>
+            
+            <h3>Flexibilität</h3>
+            <p>Ob Sie den kompletten Service brauchen oder nur Teilleistungen - wir passen uns Ihren Bedürfnissen an. Ob regional bis 100 km oder deutschlandweit für Großprojekte - wir finden eine Lösung.</p>
+        </div>
+
+        <div class="story-block">
+            <h2>Was P&N heute auszeichnet</h2>
+            <p>Heute sind wir ein <strong>vollständig registriertes Einzelunternehmen</strong> mit offizieller Handwerkskammer-Erlaubnis, Betriebshaftpflicht und USt-IdNr. Wir bieten <strong>11 verschiedene Dienstleistungen</strong> - von Hausmeisterservice über Gartenpflege bis hin zu Renovierungsarbeiten.</p>
+            
+            <p>Aber eines hat sich nie geändert: <strong>Die Art, wie wir mit Menschen umgehen.</strong></p>
+            
+            <p>Jeder Kunde wird respektvoll behandelt. Jedes Projekt - egal ob 500 Euro oder 50.000 Euro - bekommt die gleiche Aufmerksamkeit und Sorgfalt.</p>
+            
+            <div class="highlight-box">
+                <h3>🎯 Unser Versprechen</h3>
+                <p><strong>Wir behandeln Ihr Eigentum, als wäre es unser eigenes.</strong></p>
+                <p>Das ist kein Marketing-Slogan. Das ist unsere tägliche Arbeitsweise.</p>
+            </div>
+        </div>
+
+        <div class="story-block">
+            <h2>Die Zukunft von P&N</h2>
+            <p>Wir wachsen weiter - aber kontrolliert. Qualität vor Quantität. Wir nehmen nur Projekte an, die wir mit unseren hohen Standards erfüllen können.</p>
+            
+            <p>Unser Ziel ist nicht, das größte Unternehmen zu werden. Unser Ziel ist, <strong>das zuverlässigste und fairste Unternehmen</strong> in unserer Region zu bleiben.</p>
+        </div>
+    </section>
+
+    <section class="values">
+        <div style="text-align:center; margin-bottom:4rem;">
+            <h2 style="font-size:3rem; font-weight:900; color:var(--dark); margin-bottom:1rem;">Unsere Werte</h2>
+            <p style="font-size:1.3rem; color:var(--gray); max-width:700px; margin:0 auto;">Was uns antreibt und leitet</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Integrität</h3>
+                <p>Wir halten unser Wort. Wenn wir sagen, wir machen etwas, machen wir es. Wenn wir einen Termin vereinbaren, halten wir ihn.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>Transparenz</h3>
+                <p>Keine versteckten Kosten. Keine unklaren Kalkulationen. Sie wissen immer genau, wofür Sie bezahlen und warum.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Qualität</h3>
+                <p>Wir arbeiten nicht schnell - wir arbeiten richtig. Jedes Projekt wird mit derselben Sorgfalt behandelt.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Zuverlässigkeit</h3>
+                <p>24-Stunden Reaktionszeit auf Anfragen. Pünktliche Projektabwicklung. Sie können sich auf uns verlassen.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Sicherheit</h3>
+                <p>Vollversichert. Handwerkskammer-zertifiziert. Rechtlich einwandfrei. Sie tragen null Risiko.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">💼</div>
+                <h3>Fairness</h3>
+                <p>Faire Preise für faire Arbeit. Wir empfehlen nur, was wirklich nötig ist. Ihr Vertrauen ist wichtiger als kurzfristige Gewinne.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding:8rem 3rem; text-align:center; background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); color:#fff;">
+        <div style="max-width:900px; margin:0 auto;">
+            <h2 style="font-size:3.5rem; font-weight:900; margin-bottom:1.5rem;">Bereit, mit uns zu arbeiten?</h2>
+            <p style="font-size:1.3rem; margin-bottom:3rem; color:rgba(255,255,255,0.8);">Erleben Sie selbst, warum unsere Kunden immer wieder zu uns zurückkommen</p>
+            <a href="angebot.html" style="background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:1.1rem; display:inline-block;">Jetzt Angebot anfragen →</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>P&N Gebäudeservice</h3>
+                <p>Martinstraße 2a<br>68642 Bürstadt<br>Deutschland</p>
+            </div>
+            <div class="footer-section">
+                <h3>Leistungen</h3>
+                <ul>
+                    <li><a href="hausmeister.html">Hausmeisterservice</a></li>
+                    <li><a href="reinigung.html">Gebäudereinigung</a></li>
+                    <li><a href="garten.html">Gartenpflege</a></li>
+                    <li><a href="leistungen.html">Alle Leistungen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +49 174 7021338<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49d9a929bb4849ad993958680919ad9819a90d986919d9a9d93819a93da979b99">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="agb.html">AGB</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="f

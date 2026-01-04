@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angebot anfragen | P&N Gebäudeservice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold:#D4AF37; --gold-dark:#B8941F; --dark:#1a1a1a; --gray:#333; --light:#F5F5F5; }
+        body { font-family:'Inter',sans-serif; color:var(--gray); line-height:1.6; }
+        
+        header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); box-shadow:0 2px 30px rgba(0,0,0,0.1); z-index:1000; }
+        nav { max-width:1600px; margin:0 auto; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { display:flex; align-items:center; gap:1rem; }
+        .logo-shield { width:50px; height:60px; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--dark); }
+        .logo-text { font-size:1.5rem; font-weight:900; color:var(--dark); }
+        .logo-subtitle { font-size:0.75rem; color:var(--gold); font-weight:600; text-transform:uppercase; }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--gray); font-weight:600; transition:color 0.3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .cta-header { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:0.9rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; }
+        
+        .hero-page { margin-top:90px; padding:6rem 3rem 4rem; background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); text-align:center; color:#fff; }
+        .hero-page h1 { font-size:4rem; font-weight:900; margin-bottom:1.5rem; }
+        .hero-page p { font-size:1.5rem; color:rgba(255,255,255,0.8); max-width:800px; margin:0 auto 2rem; }
+        .hero-benefits { display:flex; gap:3rem; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
+        .hero-benefit { display:flex; align-items:center; gap:0.8rem; font-size:1.1rem; }
+        .hero-benefit span { font-size:1.5rem; }
+        
+        .form-section { padding:6rem 3rem; max-width:1000px; margin:0 auto; }
+        
+        .info-box { background:var(--light); border-left:4px solid var(--gold); padding:2rem; border-radius:15px; margin-bottom:3rem; }
+        .info-box h3 { color:var(--gold); margin-bottom:1rem; font-size:1.3rem; }
+        .info-box ul { margin-left:1.5rem; margin-top:1rem; }
+        .info-box ul li { margin-bottom:0.5rem; }
+        
+        .form-container { background:#fff; padding:4rem; border-radius:25px; box-shadow:0 20px 80px rgba(0,0,0,0.1); }
+        
+        .form-group { margin-bottom:2rem; }
+        .form-group label { display:block; font-weight:700; margin-bottom:0.8rem; color:var(--dark); font-size:1.05rem; }
+        .form-group label .required { color:#ef4444; }
+        .form-group label .optional { color:var(--gray); font-weight:400; font-size:0.9rem; }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width:100%;
+            padding:1rem 1.2rem;
+            border:2px solid #e5e5e5;
+            border-radius:12px;
+            font-family:'Inter',sans-serif;
+            font-size:1rem;
+            transition:all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline:none;
+            border-color:var(--gold);
+            box-shadow:0 0 0 4px rgba(212,175,55,0.1);
+        }
+        
+        .form-group textarea { min-height:150px; resize:vertical; }
+        
+        .form-help { font-size:0.9rem; color:var(--gray); margin-top:0.5rem; font-style:italic; }
+        
+        .dynamic-fields { display:none; margin-top:2rem; padding:2rem; background:var(--light); border-radius:15px; }
+        .dynamic-fields.active { display:block; animation:slideDown 0.4s ease-out; }
+        
+        @keyframes slideDown {
+            from { opacity:0; transform:translateY(-20px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+        
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+        
+        .distance-warning { display:none; background:#fef3c7; border:2px solid #fbbf24; padding:1.5rem; border-radius:12px; margin-top:1.5rem; }
+        .distance-warning.show { display:block; animation:slideDown 0.4s ease-out; }
+        .distance-warning h4 { color:#92400e; margin-bottom:0.8rem; }
+        .distance-warning ul { margin-left:1.5rem; }
+        .distance-warning li { margin-bottom:0.5rem; color:#92400e; }
+        
+        .submit-section { margin-top:3rem; padding-top:2rem; border-top:2px solid var(--light); }
+        .submit-btn {
+            width:100%;
+            background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%);
+            color:var(--dark);
+            padding:1.5rem;
+            border:none;
+            border-radius:50px;
+            font-size:1.2rem;
+            font-weight:700;
+            cursor:pointer;
+            transition:all 0.3s;
+            box-shadow:0 6px 25px rgba(212,175,55,0.4);
+        }
+        
+        .submit-btn:hover { transform:translateY(-3px); box-shadow:0 8px 35px rgba(212,175,55,0.5); }
+        
+        .submit-note { text-align:center; margin-top:1.5rem; color:var(--gray); font-size:0.95rem; }
+        
+        footer { background:var(--dark); color:rgba(255,255,255,0.8); padding:5rem 3rem 2rem; }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+        .footer-section h3 { color:var(--gold); margin-bottom:1.5rem; }
+        .footer-section ul { list-style:none; }
+        .footer-section ul li { margin-bottom:0.8rem; }
+        .footer-section a { color:rgba(255,255,255,0.8); text-decoration:none; }
+        .footer-section a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:rgba(255,255,255,0.6); }
+        
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .hero-page h1 { font-size:2.5rem; }
+            .form-container { padding:2rem; }
+            .form-row { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-shield">P&N</div>
+                <div>
+                    <div class="logo-text">P&N GEBÄUDESERVICE</div>
+                    <div class="logo-subtitle">Premium Facility Management</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="leistungen.html">Leistungen</a></li>
+                <li><a href="preise.html">Preise</a></li>
+                <li><a href="ueber-uns.html">Über uns</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="angebot.html" class="cta-header">Angebot anfragen</a>
+        </nav>
+    </header>
+
+    <section class="hero-page">
+        <h1>Angebot anfragen</h1>
+        <p>Füllen Sie das Formular aus und erhalten Sie innerhalb von 24 Stunden Ihr individuelles Angebot</p>
+        <div class="hero-benefits">
+            <div class="hero-benefit"><span>✓</span> Kostenlos & unverbindlich</div>
+            <div class="hero-benefit"><span>✓</span> Antwort in 24h</div>
+            <div class="hero-benefit"><span>✓</span> Individuelle Kalkulation</div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="info-box">
+            <h3>📋 Wichtige Hinweise für Ihr Angebot:</h3>
+            <ul>
+                <li><strong>Materialien:</strong> Werden auf Basis eines Vertrags und Vorabrechnung bezahlt</li>
+                <li><strong>Einsatzgebiet:</strong> Bis 100 km kostenlos | Darüber hinaus für Großaufträge ab 700€ netto (Anfahrt wird berechnet)</li>
+                <li><strong>Große Distanzen (300-500+ km):</strong> Distanz + Übernachtungskosten (Diurna/Hotel) werden zusätzlich berechnet</li>
+                <li><strong>Angebot nur per:</strong> E-Mail-Formular oder WhatsApp - Keine telefonischen Anfragen</li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form action="https://formspree.io/f/xyzygwqp" method="POST" id="angebotForm">
+                
+                <!-- KONTAKTDATEN -->
+                <h2 style="margin-bottom:2rem; color:var(--dark);">1. Ihre Kontaktdaten</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Vorname <span class="required">*</span></label>
+                        <input type="text" name="vorname" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nachname <span class="required">*</span></label>
+                        <input type="text" name="nachname" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>E-Mail-Adresse <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Telefon / WhatsApp <span class="optional">(optional)</span></label>
+                    <input type="tel" name="telefon">
+                    <div class="form-help">Für schnellere Rückfragen</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Firma <span class="optional">(falls gewerblich)</span></label>
+                    <input type="text" name="firma">
+                </div>
+                
+                <!-- PROJEKTADRESSE -->
+                <h2 style="margin:3rem 0 2rem; color:var(--dark);">2. Projektadresse</h2>
+                
+                <div class="form-group">
+                    <label>Straße & Hausnummer <span class="required">*</span></label>
+                    <input type="text" name="strasse" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>PLZ <span class="required">*</span></label>
+                        <input type="text" name="plz" id="plz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ort <span class="required">*</span></label>
+                        <input type="text" name="ort" id="ort" required>
+                    </div>
+                </div>
+                
+                <div class="distance-warning" id="distanceWarning">
+                    <h4>⚠️ Hinweis zur Entfernung:</h4>
+                    <ul>
+                        <li><strong>Bis 100 km:</strong> Anfahrt kostenlos inklusive</li>
+                        <li><strong>100-300 km:</strong> Nur für Aufträge ab 700€ netto - Anfahrt wird berechnet</li>
+                        <li><strong>Über 300 km:</strong> Anfahrt + Übernachtung/Diurna werden zusätzlich berechnet</li>
+                    </ul>
+                </div>
+                
+                <!-- DIENSTLEISTUNG -->
+                <h2 style="margin:3rem 0 2rem; color:var(--dark);">3. Gewünschte Dienstleistung</h2>
+                
+                <div class="form-group">
+                    <label>Wählen Sie die Dienstleistung <span class="required">*</span></label>
+                    <select name="dienstleistung" id="serviceSelect" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="hausmeister">Hausmeisterservice</option>
+                        <option value="reinigung">Gebäudereinigung</option>
+                        <option value="garten">Garten- und Landschaftspflege</option>
+                        <option value="umzug">Umzugsservice</option>
+                        <option value="renovierung">Renovierung & Ausbau</option>
+                        <option value="terrasse">Terrassenbau, Pflaster & Zaun</option>
+                        <option value="montage">Montage & Installation</option>
+                        <option value="winter">Winterdienst</option>
+                        <option value="transport">Kleintransporte</option>
+                        <option value="demontage">Abbruch & Demontage</option>
+                        <option value="metall">Metall- & Schweißarbeiten</option>
+                    </select>
+                </div>
+                
+                <!-- HAUSMEISTER FIELDS -->
+                <div class="dynamic-fields" id="fields-hausmeister">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Hausmeisterservice Details</h3>
+                    <div class="form-group">
+                        <label>Anzahl Wohneinheiten</label>
+                        <input type="number" name="haus_wohneinheiten">
+                    </div>
+                    <div class="form-group">
+                        <label>Gewünschte Leistungen (bitte alle ankreuzen):</label>
+                        <div style="display:grid; gap:0.8rem; margin-top:1rem;">
+                            <label style="font-weight:400;"><input type="checkbox" name="haus_treppen" value="ja"> Treppenhausreinigung</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="haus_muell" value="ja"> Mülltonnenservice</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="haus_winter" value="ja"> Winterdienst</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="haus_dach" value="ja"> Dachrinnenreinigung</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="haus_garten" value="ja"> Grünanlagenpflege</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- REINIGUNG FIELDS -->
+                <div class="dynamic-fields" id="fields-reinigung">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Gebäudereinigung Details</h3>
+                    <div class="form-group">
+                        <label>Art der Reinigung</label>
+                        <select name="rein_art">
+                            <option value="">Bitte wählen...</option>
+                            <option value="buero">Büroreinigung</option>
+                            <option value="praxis">Praxisreinigung</option>
+                            <option value="privat">Privathaushalt</option>
+                            <option value="senior">Seniorenbetreuung (mit Kassenabrechnung)</option>
+                            <option value="grund">Grundreinigung</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fläche in m²</label>
+                        <input type="number" name="rein_flaeche">
+                    </div>
+                    <div class="form-group">
+                        <label>Häufigkeit</label>
+                        <select name="rein_haeufigkeit">
+                            <option value="">Bitte wählen...</option>
+                            <option value="einmalig">Einmalig</option>
+                            <option value="woechentlich">Wöchentlich</option>
+                            <option value="2wochen">Alle 2 Wochen</option>
+                            <option value="monatlich">Monatlich</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- GARTEN FIELDS -->
+                <div class="dynamic-fields" id="fields-garten">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Gartenpflege Details</h3>
+                    <div class="form-group">
+                        <label>Gartengröße in m²</label>
+                        <input type="number" name="gart_groesse">
+                    </div>
+                    <div class="form-group">
+                        <label>Zustand des Gartens</label>
+                        <select name="gart_zustand">
+                            <option value="">Bitte wählen...</option>
+                            <option value="gepflegt">Gepflegt (regelmäßige Pflege)</option>
+                            <option value="leicht">Leicht verwildert</option>
+                            <option value="stark">Stark verwildert (Grundreinigung nötig)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Gewünschte Arbeiten:</label>
+                        <div style="display:grid; gap:0.8rem; margin-top:1rem;">
+                            <label style="font-weight:400;"><input type="checkbox" name="gart_rasen" value="ja"> Rasenmähen</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="gart_hecke" value="ja"> Heckenschnitt</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="gart_laub" value="ja"> Laubbeseitigung</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="gart_unkraut" value="ja"> Unkrautentfernung</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UMZUG FIELDS -->
+                <div class="dynamic-fields" id="fields-umzug">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Umzugsservice Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Anzahl Zimmer</label>
+                            <input type="number" name="umz_zimmer">
+                        </div>
+                        <div class="form-group">
+                            <label>Etage ALT (mit/ohne Lift?)</label>
+                            <input type="text" name="umz_etage_alt" placeholder="z.B. 3.OG ohne Lift">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Etage NEU (mit/ohne Lift?)</label>
+                            <input type="text" name="umz_etage_neu" placeholder="z.B. 2.OG mit Lift">
+                        </div>
+                        <div class="form-group">
+                            <label>Entfernung in km</label>
+                            <input type="number" name="umz_km">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Benötigte Leistungen:</label>
+                        <div style="display:grid; gap:0.8rem; margin-top:1rem;">
+                            <label style="font-weight:400;"><input type="checkbox" name="umz_demo" value="ja"> Demontage am alten Ort</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="umz_trans" value="ja"> Transport</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="umz_mont" value="ja"> Montage am neuen Ort</label>
+                            <label style="font-weight:400;"><input type="checkbox" name="umz_pack" value="ja"> Verpackungsservice</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RENOVIERUNG FIELDS -->
+                <div class="dynamic-fields" id="fields-renovierung">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Renovierung Details</h3>
+                    <div class="form-group">
+                        <label>Art der Renovierung</label>
+                        <select name="reno_art">
+                            <option value="">Bitte wählen...</option>
+                            <option value="maler">Malerarbeiten</option>
+                            <option value="trockenbau">Trockenbau</option>
+                            <option value="boden">Bodenverlegung</option>
+                            <option value="komplett">Komplettrenovierung</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fläche in m²</label>
+                        <input type="number" name="reno_flaeche">
+                    </div>
+                    <div class="form-group">
+                        <label>Raumhöhe</label>
+                        <input type="text" name="reno_hoehe" placeholder="z.B. 2,50m">
+                    </div>
+                    <div class="form-group">
+                        <label>Stotapp-Profi Tapete gewünscht?</label>
+                        <select name="reno_tapete">
+                            <option value="nein">Nein</option>
+                            <option value="ja">Ja</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- TERRASSE FIELDS -->
+                <div class="dynamic-fields" id="fields-terrasse">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Terrassenbau Details</h3>
+                    <div class="form-group">
+                        <label>Art des Projekts</label>
+                        <select name="terr_art">
+                            <option value="">Bitte wählen...</option>
+                            <option value="terrasse">Terrassenbau</option>
+                            <option value="pflaster">Pflasterarbeiten</option>
+                            <option value="zaun">Zaunbau</option>
+                            <option value="tor">Torbau</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fläche in m² / Länge in m</label>
+                        <input type="text" name="terr_groesse" placeholder="z.B. 20m² oder 15m Zaun">
+                    </div>
+                    <div class="form-group">
+                        <label>Gewünschtes Material</label>
+                        <input type="text" name="terr_material" placeholder="z.B. WPC, Holz, Stein, Metall">
+                    </div>
+                </div>
+                
+                <!-- MONTAGE FIELDS -->
+                <div class="dynamic-fields" id="fields-montage">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Montage Details</h3>
+                    <div class="form-group">
+                        <label>Was soll montiert werden?</label>
+                        <select name="mont_art">
+                            <option value="">Bitte wählen...</option>
+                            <option value="moebel">Möbelmontage (IKEA, etc)</option>
+                            <option value="kueche">Küchenmontage</option>
+                            <option value="carport">Carport</option>
+                            <option value="pavillon">Pavillon</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Anzahl Teile / Umfang</label>
+                        <input type="text" name="mont_umfang" placeholder="z.B. 2 Schränke, 1 Küche komplett">
+                    </div>
+                </div>
+                
+                <!-- WINTER FIELDS -->
+                <div class="dynamic-fields" id="fields-winter">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Winterdienst Details</h3>
+                    <div class="form-group">
+                        <label>Art der Fläche</label>
+                        <input type="text" name="wint_flaeche" placeholder="z.B. Gehweg 50m, Einfahrt 30m²">
+                    </div>
+                    <div class="form-group">
+                        <label>Bereitschaft gewünscht?</label>
+                        <select name="wint_bereit">
+                            <option value="nein">Nein, nur bei Bedarf</option>
+                            <option value="ja">Ja, Bereitschaftsdienst</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- TRANSPORT FIELDS -->
+                <div class="dynamic-fields" id="fields-transport">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Kleintransporte Details</h3>
+                    <div class="form-group">
+                        <label>Was soll transportiert werden?</label>
+                        <input type="text" name="trans_was" placeholder="z.B. Möbel, Baumaterial, Gartenmaterial">
+                    </div>
+                    <div class="form-group">
+                        <label>Entfernung in km</label>
+                        <input type="number" name="trans_km">
+                    </div>
+                </div>
+                
+                <!-- DEMONTAGE FIELDS -->
+                <div class="dynamic-fields" id="fields-demontage">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Demontage Details</h3>
+                    <div class="form-group">
+                        <label>Was soll demontiert/abgebrochen werden?</label>
+                        <input type="text" name="demo_was" placeholder="z.B. Küche, Wand, Einrichtung">
+                    </div>
+                    <div class="form-group">
+                        <label>Entsorgung gewünscht?</label>
+                        <select name="demo_entsorg">
+                            <option value="ja">Ja, mit Entsorgung</option>
+                            <option value="nein">Nein, nur Demontage</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- METALL FIELDS -->
+                <div class="dynamic-fields" id="fields-metall">
+                    <h3 style="margin-bottom:1.5rem; color:var(--gold);">Metallarbeiten Details</h3>
+                    <div class="form-group">
+                        <label>Beschreibung der Arbeit</label>
+                        <textarea name="metall_beschreibung" placeholder="z.B. Geländer reparieren, Zauntor schweißen"></textarea>
+                    </div>
+                </div>
+                
+                <!-- PROJEKTBESCHREIBUNG -->
+                <h2 style="margin:3rem 0 2rem; color:var(--dark);">4. Detaillierte Projektbeschreibung</h2>
+                
+                <div class="form-group">
+                    <label>Beschreiben Sie Ihr Projekt so detailliert wie möglich <span class="required">*</span></label>
+                    <textarea name="beschreibung" required placeholder="Je mehr Details Sie uns geben, desto genauer können wir Ihr Angebot kalkulieren. Bitte erwähnen Sie:
+- Zeitrahmen / Wunschtermin
+- Besondere Anforderungen
+- Zustand (bei Renovierung/Garten)
+- Materialwünsche
+- Sonstiges"></textarea>
+                    <div class="form-help">Je detaillierter, desto präziser unser Angebot</div>
+                </div>
+                
+                <!-- FOTOS -->
+                <div class="form-group">
+                    <label>Fotos hochladen <span class="optional">(optional, aber hilfreich)</span></label>
+                    <input type="file" name="fotos" accept="image/*" multiple>
+                    <div class="form-help">Fotos helfen uns, Ihr Projekt besser zu verstehen</div>
+                </div>
+                
+                <!-- SUBMIT -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">Kostenloses Angebot anfragen →</button>
+                    <p class="submit-note">
+                        ✓ Wir antworten innerhalb von 24 Stunden<br>
+                        ✓ Alle Angaben werden vertraulich behandelt<br>
+                        ✓ Keine versteckten Kosten - Transparente Kalkulation
+                    </p>
+                </div>
+                
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>P&N Gebäudeservice</h3>
+                <p>Martinstraße 2a<br>68642 Bürstadt</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +49 174 7021338<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99f0f7fff6d9e9f7b4fef8ebedfcf7b4ecf7fdb4ebfcf0f7f0feecf7feb7faf6f4">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Alternative Kontakt</h3>
+                <p><a href="kontakt.html">Kontaktformular</a><br><a href="https://wa.me/491747021338">WhatsApp</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="agb.html">AGB</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 P&N Gebäudeservice | USt-IdNr: DE449886796</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Dynamic form fields based on service selection
+        document.getElementById('serviceSelect').addEventListener('change', function() {
+            // Hide all dynamic fields
+            document.querySelectorAll('.dynamic-fields').forEach(field => {
+                field.classList.remove('active');
+            });
+            
+            // Show selected service fields
+            const selected = this.value;
+            if (selected) {
+                const targetField = document.getElementById('fields-' + selected);
+                if (targetField) {
+                    targetField.classList.add('active');
+                }
+            }
+        });
+        
+        // Distance warning (simple check based on PLZ)
+        document.getElementById('plz').addEventListener('blur', function() {
+            const plz = this.value;
+            const warning = document.getElementById('distanceWarning');
+            
+            // Bürstadt PLZ: 68642
+            // Simple distance estimation (not accurate,

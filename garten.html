@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garten- und Landschaftspflege | P&N Gebäudeservice</title>
+    <meta name="description" content="Professionelle Gartenpflege in Bürstadt. Grundreinigung verwilderter Gärten, regelmäßige Pflege, Rasenmähen, Heckenschnitt. Ab 666€.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold:#D4AF37; --dark:#1a1a1a; --gray:#333; --light:#F5F5F5; --green:#22C55E; }
+        body { font-family:'Inter',sans-serif; color:var(--gray); line-height:1.6; }
+        
+        header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); box-shadow:0 2px 30px rgba(0,0,0,0.1); z-index:1000; }
+        nav { max-width:1600px; margin:0 auto; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { display:flex; align-items:center; gap:1rem; }
+        .logo-shield { width:50px; height:60px; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--dark); }
+        .logo-text { font-size:1.5rem; font-weight:900; color:var(--dark); }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--gray); font-weight:600; transition:color 0.3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .cta-header { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:0.9rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; }
+        
+        .hero-service { margin-top:90px; padding:6rem 3rem; background:linear-gradient(135deg,#166534 0%,var(--green) 100%); color:#fff; }
+        .hero-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+        .hero-icon { font-size:6rem; margin-bottom:1.5rem; }
+        .hero-left h1 { font-size:4rem; font-weight:900; margin-bottom:1.5rem; line-height:1.1; }
+        .hero-left p { font-size:1.3rem; color:rgba(255,255,255,0.95); margin-bottom:2rem; line-height:1.8; }
+        .hero-badges { display:flex; gap:1.5rem; flex-wrap:wrap; }
+        .badge { background:rgba(255,255,255,0.15); padding:0.8rem 1.5rem; border-radius:50px; font-size:0.95rem; border:1px solid rgba(255,255,255,0.3); }
+        .hero-box { background:rgba(255,255,255,0.15); padding:3rem; border-radius:25px; backdrop-filter:blur(10px); border:2px solid rgba(255,255,255,0.2); }
+        .hero-box h3 { font-size:2rem; margin-bottom:1.5rem; color:#fbbf24; }
+        .hero-box ul { list-style:none; }
+        .hero-box li { padding:0.8rem 0; font-size:1.1rem; padding-left:2rem; position:relative; }
+        .hero-box li::before { content:'✓'; position:absolute; left:0; color:#fbbf24; font-weight:900; font-size:1.3rem; }
+        
+        .section { padding:8rem 3rem; max-width:1400px; margin:0 auto; }
+        .section-header { text-align:center; margin-bottom:5rem; }
+        .section-label { color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.15rem; font-size:0.9rem; margin-bottom:1rem; }
+        .section-title { font-size:3rem; font-weight:900; color:var(--dark); margin-bottom:1.5rem; }
+        .section-subtitle { font-size:1.2rem; color:var(--gray); max-width:700px; margin:0 auto; }
+        
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; }
+        .service-card { background:#fff; padding:3rem 2.5rem; border-radius:25px; box-shadow:0 10px 50px rgba(0,0,0,0.08); transition:all 0.3s; border-top:4px solid var(--green); }
+        .service-card:hover { transform:translateY(-10px); box-shadow:0 20px 70px rgba(0,0,0,0.12); }
+        .service-icon { font-size:3.5rem; margin-bottom:1.5rem; }
+        .service-card h3 { font-size:1.8rem; font-weight:800; color:var(--dark); margin-bottom:1rem; }
+        .service-card p { color:var(--gray); line-height:1.8; margin-bottom:1.5rem; }
+        .service-card ul { list-style:none; }
+        .service-card li { padding:0.6rem 0; padding-left:2rem; position:relative; color:var(--gray); }
+        .service-card li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:900; }
+        
+        .highlight-section { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); padding:8rem 3rem; color:var(--dark); }
+        .highlight-content { max-width:1200px; margin:0 auto; text-align:center; }
+        .highlight-content h2 { font-size:3.5rem; font-weight:900; margin-bottom:2rem; }
+        .highlight-content p { font-size:1.3rem; line-height:1.8; margin-bottom:3rem; }
+        .highlight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; margin-top:4rem; }
+        .highlight-item { background:rgba(0,0,0,0.05); padding:2.5rem; border-radius:20px; }
+        .highlight-item h3 { font-size:1.8rem; margin-bottom:1rem; }
+        .highlight-item p { font-size:1.1rem; line-height:1.7; }
+        
+        .preise { background:var(--light); }
+        .preis-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3rem; margin-top:4rem; }
+        .preis-card { background:#fff; padding:3.5rem 3rem; border-radius:25px; box-shadow:0 10px 50px rgba(0,0,0,0.08); position:relative; }
+        .preis-card.featured { border:3px solid var(--green); transform:scale(1.05); }
+        .preis-card.featured::before { content:'HÄUFIGSTE ANFRAGE'; position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--green); color:#fff; padding:0.5rem 2rem; border-radius:50px; font-weight:900; font-size:0.85rem; }
+        .preis-card h3 { font-size:2rem; color:var(--dark); margin-bottom:1rem; }
+        .preis-card .price { font-size:3.5rem; font-weight:900; color:var(--green); margin:1.5rem 0; }
+        .preis-card .price span { font-size:1.3rem; font-weight:400; color:var(--gray); }
+        .preis-card .desc { color:var(--gray); margin-bottom:2rem; padding-bottom:2rem; border-bottom:2px solid var(--light); }
+        .preis-card ul { list-style:none; margin-bottom:2rem; }
+        .preis-card li { padding:0.8rem 0; padding-left:2rem; position:relative; font-size:1.05rem; }
+        .preis-card li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:900; }
+        
+        .kalkulation { background:#fff; }
+        .kalk-box { background:var(--light); padding:3rem; border-radius:20px; border-left:4px solid var(--green); max-width:900px; margin:3rem auto; }
+        .kalk-box h3 { color:var(--green); font-size:2rem; margin-bottom:2rem; }
+        .kalk-row { display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; padding:1.5rem 0; border-bottom:1px solid rgba(0,0,0,0.1); align-items:center; }
+        .kalk-row:last-child { border-bottom:none; }
+        .kalk-row.total { background:#fff; padding:1.5rem; border-radius:10px; margin-top:1rem; font-weight:700; font-size:1.2rem; }
+        .kalk-item strong { color:var(--dark); font-size:1.1rem; }
+        .kalk-item p { color:var(--gray); font-size:0.95rem; margin-top:0.3rem; }
+        .kalk-price { text-align:right; font-weight:700; font-size:1.2rem; color:var(--dark); }
+        
+        .prozess { background:var(--light); }
+        .prozess-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:4rem; }
+        .prozess-step { text-align:center; padding:2rem; }
+        .prozess-number { width:60px; height:60px; background:var(--green); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900; margin:0 auto 1.5rem; }
+        .prozess-step h3 { font-size:1.3rem; color:var(--dark); margin-bottom:1rem; }
+        .prozess-step p { color:var(--gray); line-height:1.8; }
+        
+        .faq { background:#fff; }
+        .faq-list { max-width:900px; margin:4rem auto 0; }
+        .faq-item { background:var(--light); padding:2rem; border-radius:15px; margin-bottom:1.5rem; border-left:4px solid var(--green); }
+        .faq-item h3 { color:var(--dark); font-size:1.3rem; margin-bottom:1rem; }
+        .faq-item p { color:var(--gray); line-height:1.8; }
+        
+        .cta-section { background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); padding:8rem 3rem; text-align:center; color:#fff; }
+        .cta-section h2 { font-size:3.5rem; font-weight:900; margin-bottom:1.5rem; }
+        .cta-section p { font-size:1.3rem; margin-bottom:3rem; color:rgba(255,255,255,0.8); }
+        .cta-btn { display:inline-block; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:1.1rem; transition:all 0.3s; }
+        .cta-btn:hover { transform:translateY(-3px); }
+        
+        footer { background:var(--dark); color:rgba(255,255,255,0.8); padding:5rem 3rem 2rem; }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+        .footer-section h3 { color:var(--gold); margin-bottom:1.5rem; }
+        .footer-section ul { list-style:none; }
+        .footer-section ul li { margin-bottom:0.8rem; }
+        .footer-section a { color:rgba(255,255,255,0.8); text-decoration:none; }
+        .footer-section a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:rgba(255,255,255,0.6); }
+        
+        @media (max-width:1024px) { .hero-content { grid-template-columns:1fr; } .services-grid { grid-template-columns:repeat(2,1fr); } .preis-grid, .highlight-grid, .prozess-grid { grid-template-columns:1fr; } }
+        @media (max-width:768px) { .nav-links { display:none; } .hero-left h1 { font-size:2.5rem; } .services-grid { grid-template-columns:1fr; } .kalk-row { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-shield">P&N</div>
+                <div><div class="logo-text">P&N GEBÄUDESERVICE</div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="leistungen.html">Leistungen</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="angebot.html" class="cta-header">Angebot anfragen</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-icon">🌳</div>
+                <h1>Garten- und Landschaftspflege</h1>
+                <p>Vom verwilderten Dschungel zum gepflegten Garten. Wir bringen Ihren Garten zurück in Form - professionell, gründlich und mit Entsorgung inklusive.</p>
+                <div class="hero-badges">
+                    <div class="badge">✓ Grundreinigung verwildert</div>
+                    <div class="badge">✓ Regelmäßige Pflege</div>
+                    <div class="badge">✓ Entsorgung inklusive</div>
+                </div>
+            </div>
+            <div class="hero-box">
+                <h3>🌿 Spezialisiert auf verwilderte Gärten</h3>
+                <ul>
+                    <li>Wildwuchs komplett entfernen</li>
+                    <li>Rasen wieder hergestellt</li>
+                    <li>Hecken zurückschneiden</li>
+                    <li>Unkraut professionell</li>
+                    <li>Grünschnitt Entsorgung</li>
+                    <li>Ihr Garten wieder nutzbar</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-label">UNSERE GARTENLEISTUNGEN</div>
+            <h2 class="section-title">Alles für Ihren Garten</h2>
+            <p class="section-subtitle">Von der einmaligen Grundreinigung bis zur regelmäßigen Pflege</p>
+        </div>
+        
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-icon">🌿</div>
+                <h3>Grundreinigung verwildert</h3>
+                <p>Ihr Garten ist jahrelang nicht gepflegt worden? Wir machen ihn wieder nutzbar!</p>
+                <ul>
+                    <li>Wildwuchs komplett entfernen</li>
+                    <li>Hecken radikal zurückschneiden</li>
+                    <li>Rasen freilegen & mähen</li>
+                    <li>Unkraut entfernen</li>
+                    <li>Grünschnitt Entsorgung</li>
+                    <li>Garten wieder hergestellt</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <h3>Regelmäßige Gartenpflege</h3>
+                <p>Laufende Pflege damit Ihr Garten gepflegt bleibt - 4×/Jahr oder öfter.</p>
+                <ul>
+                    <li>Rasenmähen professionell</li>
+                    <li>Hecken in Form schneiden</li>
+                    <li>Unkraut jäten</li>
+                    <li>Laub beseitigen (Herbst)</li>
+                    <li>Beete pflegen</li>
+                    <li>Nach Vereinbarung</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🍂</div>
+                <h3>Laubbeseitigung</h3>
+                <p>Herbst-Service: Laub von Rasen, Wegen und Einfahrten entfernen.</p>
+                <ul>
+                    <li>Rasen laubfrei</li>
+                    <li>Wege & Einfahrt</li>
+                    <li>Dachrinnen check</li>
+                    <li>Professionelle Geräte</li>
+                    <li>Entsorgung inklusive</li>
+                    <li>Oktober-November</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Heckenschnitt</h3>
+                <p>Professioneller Heckenschnitt für gepflegte Hecken in der richtigen Form.</p>
+                <ul>
+                    <li>Formschnitt präzise</li>
+                    <li>Höhe & Breite angepasst</li>
+                    <li>Thujahecken, Liguster, etc</li>
+                    <li>2× pro Jahr empfohlen</li>
+                    <li>Professionelle Werkzeuge</li>
+                    <li>Schnittgut Entsorgung</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h3>Unkrautentfernung</h3>
+                <p>Hartnäckiges Unkraut professionell und nachhaltig entfernen.</p>
+                <ul>
+                    <li>Beete unkrautfrei</li>
+                    <li>Pflasterfugen reinigen</li>
+                    <li>Wurzeln entfernen</li>
+                    <li>Nachhaltige Methoden</li>
+                    <li>Umweltfreundlich</li>
+                    <li>Langfristige Wirkung</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌲</div>
+                <h3>Baumpflege</h3>
+                <p>Kleinere Bäume pflegen und in Form bringen (keine Fällungen).</p>
+                <ul>
+                    <li>Totholz entfernen</li>
+                    <li>Formschnitt klein</li>
+                    <li>Obstbäume schneiden</li>
+                    <li>Bis 5 Meter Höhe</li>
+                    <li>Keine Fällungen</li>
+                    <li>Sicherheitsschnitt</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="highlight-section">
+        <div class="highlight-content">
+            <h2>🌿 Warum wir bei verwilderten Gärten die Ersten sind</h2>
+            <p>Viele Gartenbauer lehnen stark verwilderte Gärten ab - zu viel Arbeit, zu unsauber. Wir sagen: Das ist genau unser Spezialgebiet!</p>
+            
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <h3>💪 Wir packen an</h3>
+                    <p>Egal wie verwildert - wir schrecken vor nichts zurück. Je wilder, desto interessanter für uns!</p>
+                </div>
+                
+                <div class="highlight-item">
+                    <h3>🚛 Entsorgung inklusive</h3>
+                    <p>Sie müssen sich um nichts kümmern. Wir entsorgen allen Grünschnitt fachgerecht - im Preis inbegriffen.</p>
+                </div>
+                
+                <div class="highlight-item">
+                    <h3>⚡ Schnelle Ergebnisse</h3>
+                    <p>In 1-3 Tagen ist Ihr Garten wieder nutzbar. Sie werden Ihre Augen nicht trauen!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section preise">
+        <div class="section-header">
+            <div class="section-label">PREISBEISPIELE</div>
+            <h2 class="section-title">Transparente Gartenpflege-Preise</h2>
+            <p class="section-subtitle">Individuelle Kalkulation nach Größe und Zustand</p>
+        </div>
+        
+        <div class="preis-grid">
+            
+            <div class="preis-card featured">
+                <h3>Grundreinigung verwildert</h3>
+                <div class="price">666€</div>
+                <div class="desc">Beispiel: 52m² stark verwilderter Garten<br>Die häufigste Anfrage unserer Kunden</div>
+                <ul>
+                    <li>Wildwuchs komplett entfernen</li>
+                    <li>Hecken radikal zurück</li>
+                    <li>Rasen freilegen & mähen</li>
+                    <li>Unkraut komplett raus</li>
+                    <li>Entsorgung inklusive</li>
+                    <li>1-2 Arbeitstage</li>
+                </ul>
+                <a href="angebot.html" class="cta-btn" style="width:100%; text-align:center; margin-top:1.5rem;">Angebot anfragen</a>
+            </div>
+            
+            <div class="preis-card">
+                <h3>Regelmäßige Pflege</h3>
+                <div class="price">308€ <span>/Einsatz</span></div>
+                <div class="desc">4× pro Jahr für 52m² Garten<br>Jahrespaket: 1.232€</div>
+                <ul>
+                    <li>Frühjahr, Sommer, Herbst, Winter</li>
+                    <li>Rasenmähen</li>
+                    <li>Heckenschnitt 2×</li>
+                    <li>Unkraut jäten</li>
+                    <li>Laub beseitigen (Herbst)</li>
+                    <li>Garten gepflegt</li>
+                </ul>
+                <a href="angebot.html" class="cta-btn" style="width:100%; text-align:center; margin-top:1.5rem;">Angebot anfragen</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="section kalkulation">
+        <div class="section-header">
+            <div class="section-label">TRANSPARENZ</div>
+            <h2 class="section-title">Beispielkalkulation Grundreinigung</h2>
+            <p class="section-subtitle">So setzen sich die 666€ zusammen (52m² verwildert)</p>
+        </div>
+        
+        <div class="kalk-box">
+            <h3>Aufschlüsselung Grundreinigung</h3>
+            
+            <div class="kalk-row">
+                <div class="kalk-item">
+                    <strong>Wildwuchs entfernen</strong>
+                    <p>Brombeeren, Brennnesseln, Gestrüpp komplett raus</p>
+                </div>
+                <div style="color:var(--gray);">~6 Stunden</div>
+                <div class="kalk-price">280€</div>
+            </div>
+            
+            <div class="kalk-row">
+                <div class="kalk-item">
+                    <strong>Hecken radikal zurückschneiden</strong>
+                    <p>15 Meter Hecke von 3m auf 1,80m</p>
+                </div>
+                <div style="color:var(--gray);">~3 Stunden</div>
+                <div class="kalk-price">140€</div>
+            </div>
+            
+            <div class="kalk-row">
+                <div class="kalk-item">
+                    <strong>Rasen freilegen & mähen</strong>
+                    <p>Rasen unter Wildwuchs freigelegt + gemäht</p>
+                </div>
+                <div style="color:var(--gray);">~2 Stunden</div>
+                <div class="kalk-price">96€</div>
+            </div>
+            
+            <div class="kalk-row">
+                <div class="kalk-item">
+                    <strong>Entsorgung Grünschnitt</strong>
+                    <p>Ca. 4-5m³ Grünschnitt fachgerecht entsorgt</p>
+                </div>
+                <div style="color:var(--gray);">Entsorgung</div>
+                <div class="kalk-price">150€</div>
+            </div>
+            
+            <div class="kalk-row total">
+                <div class="kalk-item"><strong>GESAMT</strong></div>
+                <div></div>
+                <div class="kalk-price" style="color:var(--green); font-size:1.8rem;">666€</div>
+            </div>
+        </div>
+        
+        <div style="background:var(--light); padding:2rem; border-radius:15px; margin-top:3rem; border-left:4px solid var(--green); max-width:800px; margin-left:auto; margin-right:auto;">
+            <h3 style="color:var(--dark); margin-bottom:1rem;">💡 Wichtig zu wissen:</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:0.5rem 0; padding-left:2rem; position:relative;"><span style="position:absolute; left:0; color:var(--green); font-weight:900;">✓</span> Preise netto zzgl. MwSt.</li>
+                <li style="padding:0.5rem 0; padding-left:2rem; position:relative;"><span style="position:absolute; left:0; color:var(--green); font-weight:900;">✓</span> Entsorgung IMMER inklusive</li>
+                <li style="padding:0.5rem 0; padding-left:2rem; position:relative;"><span style="position:absolute; left:0; color:var(--green); font-weight:900;">✓</span> Jeder Garten ist anders - Kalkulation nach Besichtigung</li>
+                <li style="padding:0.5rem 0; padding-left:2rem; position:relative;"><span style="position:absolute; left:0; color:var(--green); font-weight:900;">✓</span> Größere Gärten: Preis pro m² sinkt</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section prozess">
+        <div class="section-header">
+            <div class="section-label">SO LÄUFT ES AB</div>
+            <h2 class="section-title">Von verwildert zu gepflegt</h2>
+        </div>
+        
+        <div class="prozess-grid">
+            <div class="prozess-step">
+                <div class="prozess-number">1</div>
+                <h3>Besichtigung</h3>
+                <p>Wir kommen vorbei, sehen uns den Garten an und besprechen Ihre Wünsche. Kostenlos!</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">2</div>
+                <h3>Angebot</h3>
+                <p>Sie erhalten ein transparentes Festpreis-Angebot mit Arbeit + Entsorgung inklusive.</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">3</div>
+                <h3>Arbeit</h3>
+                <p>Wir kommen mit allen Geräten und machen Ihren Garten wieder nutzbar. 1-3 Tage je nach Größe.</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">4</div>
+                <h3>Entsorgung</h3>
+                <p>Wir entsorgen allen Grünschnitt fachgerecht. Sie müssen sich um nichts kümmern!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq">
+        <div class="section-header">
+            <div class="section-label">HÄUFIGE FRAGEN</div>
+            <h2 class="section-title">Ihre Gartenfragen beantwortet</h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Wie wird der Preis berechnet?</h3>
+                <p>Nach m² Gartenfläche und Zustand. Ein stark verwilderter Garten kostet mehr als ein leicht verwahrloster. Deshalb besichtigen wir immer vor Ort.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Ist die Entsorgung wirklich inklusive?</h3>
+                <p>Ja, IMMER! Sie zahlen einen Festpreis und wir entsorgen allen Grünschnitt fachgerecht. Keine versteckten Kosten.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Wie lange dauert eine Grundreinigung?</h3>
+                <p>Je nach Größe und Zustand 1-3 Arbeitstage. Kleine Gärten (bis 100m²) meist an einem Tag. Größere über mehrere Tage verteilt.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Könnt ihr auch Bäume fällen?</h3>
+                <p>Nein, große Baumfällungen machen wir nicht. Kleinere Bäume (bis 5m) können wir zurückschneiden oder Totholz entfernen.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Macht ihr auch regelmäßige Pflege?</h3>
+                <p>Ja! Nach der Grundreinigung bieten wir regelmäßige Pflege an - 4×/Jahr oder öfter. So bleibt Ihr Garten dauerhaft gepflegt.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Bis wie weit fahrt ihr?</h3>
+                <p>Bis 100 km von Bürstadt kostenlos. Für größere Distanzen ab 700€ Auftragswert mit Anfahrtsberechnung.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Verwilderter Garten? Wir machen ihn wieder schön!</h2>
+        <p>Kostenlose Besichtigung · Transparentes Angebot · Entsorgung inklusive</p>
+        <a href="angebot.html" class="cta-btn">Jetzt Angebot anfragen →</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>P&N Gebäudeservice</h3>
+                <p>Martinstraße 2a<br>68642 Bürstadt</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +49 174 7021338<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e070008012e1e0043090f1c1a0b00431b000a431c0b070007091b0009400d0103">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="agb.html">AGB</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Service</h3>
+                <ul>
+                    <li><a href="leistungen.html">Leistungen</a></li>
+                    <li><a href="angebot.html">Angebot</a></li>
+                </ul>
+            </div>
+        </di

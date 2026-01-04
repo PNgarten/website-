@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | P&N Gebäudeservice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold:#D4AF37; --dark:#1a1a1a; --gray:#333; --light:#F5F5F5; }
+        body { font-family:'Inter',sans-serif; color:var(--gray); line-height:1.8; }
+        
+        header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); box-shadow:0 2px 30px rgba(0,0,0,0.1); z-index:1000; }
+        nav { max-width:1600px; margin:0 auto; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { display:flex; align-items:center; gap:1rem; }
+        .logo-shield { width:50px; height:60px; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--dark); }
+        .logo-text { font-size:1.5rem; font-weight:900; color:var(--dark); }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--gray); font-weight:600; transition:color 0.3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .cta-header { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:0.9rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; }
+        
+        .legal-header { margin-top:90px; padding:4rem 3rem 3rem; background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); color:#fff; text-align:center; }
+        .legal-header h1 { font-size:3rem; font-weight:900; margin-bottom:1rem; }
+        .legal-header p { font-size:1.1rem; color:rgba(255,255,255,0.8); }
+        
+        .legal-content { max-width:900px; margin:0 auto; padding:5rem 3rem; }
+        .legal-content h2 { font-size:2rem; font-weight:800; color:var(--dark); margin:3rem 0 1.5rem; padding-top:2rem; border-top:2px solid var(--light); }
+        .legal-content h2:first-child { margin-top:0; border-top:none; padding-top:0; }
+        .legal-content p { margin-bottom:1.5rem; }
+        .legal-content strong { color:var(--dark); font-weight:700; }
+        .legal-content a { color:var(--gold); text-decoration:none; font-weight:600; }
+        .legal-content a:hover { text-decoration:underline; }
+        
+        .contact-box { background:var(--light); padding:2.5rem; border-radius:15px; border-left:4px solid var(--gold); margin:2rem 0; }
+        .contact-box h3 { color:var(--gold); margin-bottom:1.5rem; font-size:1.5rem; }
+        .contact-box p { margin-bottom:1rem; }
+        .contact-box strong { display:block; margin-bottom:0.3rem; }
+        
+        footer { background:var(--dark); color:rgba(255,255,255,0.8); padding:5rem 3rem 2rem; }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+        .footer-section h3 { color:var(--gold); margin-bottom:1.5rem; }
+        .footer-section ul { list-style:none; }
+        .footer-section ul li { margin-bottom:0.8rem; }
+        .footer-section a { color:rgba(255,255,255,0.8); text-decoration:none; }
+        .footer-section a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:rgba(255,255,255,0.6); }
+        
+        @media (max-width:768px) { .nav-links { display:none; } .legal-header h1 { font-size:2rem; } .footer-content { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-shield">P&N</div>
+                <div>
+                    <div class="logo-text">P&N GEBÄUDESERVICE</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="leistungen.html">Leistungen</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="angebot.html" class="cta-header">Angebot anfragen</a>
+        </nav>
+    </header>
+
+    <section class="legal-header">
+        <h1>Impressum</h1>
+        <p>Angaben gemäß § 5 TMG</p>
+    </section>
+
+    <section class="legal-content">
+        
+        <div class="contact-box">
+            <h3>Anbieter</h3>
+            <p><strong>Firmenname:</strong><br>
+            P&N Garten und Reinigung</p>
+            
+            <p><strong>Inhaber:</strong><br>
+            Paul Zuga</p>
+            
+            <p><strong>Rechtsform:</strong><br>
+            Einzelunternehmen</p>
+        </div>
+
+        <h2>Anschrift</h2>
+        <p>
+            <strong>P&N Garten und Reinigung</strong><br>
+            Martinstraße 2a<br>
+            68642 Bürstadt<br>
+            Deutschland
+        </p>
+
+        <h2>Kontakt</h2>
+        <p>
+            <strong>Telefon:</strong> +49 174 7021338<br>
+            <strong>E-Mail:</strong> <a href="/cdn-cgi/l/email-protection#9ef7f0f8f1deeef0b3f9ffeceafbf0b3ebf0fab3ecfbf7f0f7f9ebf0f9b0fdf1f3"><span class="__cf_email__" data-cfemail="5c35323a331c2c32713b3d2e28393271293238712e393532353b29323b723f3331">[email&#160;protected]</span></a><br>
+            <strong>WhatsApp:</strong> <a href="https://wa.me/491747021338">+49 174 7021338</a>
+        </p>
+
+        <h2>Umsatzsteuer-Identifikationsnummer</h2>
+        <p>
+            <strong>USt-IdNr:</strong> DE449886796<br>
+            gemäß § 27a Umsatzsteuergesetz
+        </p>
+
+        <h2>Zuständige Kammer</h2>
+        <p>
+            <strong>Handwerkskammer Frankfurt-Rhein-Main</strong><br>
+            Bockenheimer Landstraße 21<br>
+            60325 Frankfurt am Main<br>
+            Deutschland
+        </p>
+        <p>
+            Website: <a href="https://www.hwk-rhein-main.de" target="_blank" rel="noopener">www.hwk-rhein-main.de</a>
+        </p>
+
+        <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+        <p>
+            <strong>Berufsbezeichnung:</strong> Gebäudeservice, Facility Management, Hausmeisterservice<br>
+            <strong>Zuständige Kammer:</strong> Handwerkskammer Frankfurt-Rhein-Main<br>
+            <strong>Verliehen in:</strong> Deutschland
+        </p>
+
+        <h2>Inhaltlich verantwortlich</h2>
+        <p>
+            <strong>Paul Zuga</strong><br>
+            Martinstraße 2a<br>
+            68642 Bürstadt<br>
+            Deutschland
+        </p>
+
+        <h2>Versicherung</h2>
+        <p>
+            Das Unternehmen verfügt über eine <strong>Betriebshaftpflichtversicherung</strong>, die Personen- und Sachschäden im Rahmen der gewerblichen Tätigkeit abdeckt.
+        </p>
+
+        <h2>EU-Streitschlichtung</h2>
+        <p>
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
+        </p>
+        <p>
+            Unsere E-Mail-Adresse finden Sie oben im Impressum.
+        </p>
+
+        <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+        <p>
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+
+        <h2>Haftung für Inhalte</h2>
+        <p>
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+        </p>
+        <p>
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+        </p>
+
+        <h2>Haftung für Links</h2>
+        <p>
+            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+        </p>
+        <p>
+            Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+        </p>
+
+        <h2>Urheberrecht</h2>
+        <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        </p>
+        <p>
+            Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+        </p>
+
+        <h2>Bildnachweise</h2>
+        <p>
+            Alle auf dieser Website verwendeten Bilder und Grafiken sind Eigentum von P&N Garten und Reinigung oder wurden mit entsprechender Lizenz erworben.
+        </p>
+
+        <div class="contact-box" style="margin-top:4rem;">
+            <h3>Fragen zum Impressum?</h3>
+            <p>Bei Fragen zu diesem Impressum oder rechtlichen Anfragen kontaktieren Sie uns bitte:</p>
+            <p>
+                <strong>E-Mail:</strong> <a href="/cdn-cgi/l/email-protection#ea83848c85aa9a84c78d8b989e8f84c79f848ec7988f8384838d9f848dc4898587"><span class="__cf_email__" data-cfemail="60090e060f20100e4d07011214050e4d150e044d1205090e0907150e074e030f0d">[email&#160;protected]</span></a><br>
+                <strong>Telefon:</strong> +49 174 7021338
+            </p>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>P&N Gebäudeservice</h3>
+                <p>Martinstraße 2a<br>68642 Bürstadt<br>Deutschland</p>
+                <p style="margin-top:1rem;">Tel: +49 174 7021338<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c3aaada5ac83b3adeea4a2b1b7a6adeeb6ada7eeb1a6aaadaaa4b6ada4eda0acae">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Leistungen</h3>
+                <ul>
+                    <li><a href="hausmeister.html">Hausmeisterservice</a></li>
+                    <li><a href="reinigung.html">Gebäudereinigung</a></li>
+                    <li><a href="garten.html">Gartenpflege</a></li>
+                    <li><a href="leistungen.html">Alle Leistungen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Unternehmen</h3>
+                <ul>
+                    <li><a href="ueber-uns.html">Über uns</a></li>
+                    <li><a href="preise.html">Preise</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+         

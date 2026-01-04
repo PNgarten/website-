@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gebäudereinigung | P&N Gebäudeservice Bürstadt</title>
+    <meta name="description" content="Professionelle Gebäudereinigung in Bürstadt. Büros, Praxen, Privathaushalte, Seniorenbetreuung mit Kassenabrechnung. Zuverlässig und gründlich.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold:#D4AF37; --dark:#1a1a1a; --gray:#333; --light:#F5F5F5; }
+        body { font-family:'Inter',sans-serif; color:var(--gray); line-height:1.6; }
+        
+        header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); box-shadow:0 2px 30px rgba(0,0,0,0.1); z-index:1000; }
+        nav { max-width:1600px; margin:0 auto; padding:1.2rem 3rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { display:flex; align-items:center; gap:1rem; }
+        .logo-shield { width:50px; height:60px; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:var(--dark); }
+        .logo-text { font-size:1.5rem; font-weight:900; color:var(--dark); }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:var(--gray); font-weight:600; transition:color 0.3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .cta-header { background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:0.9rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; }
+        
+        .hero-service { margin-top:90px; padding:6rem 3rem; background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); color:#fff; text-align:center; }
+        .hero-icon { font-size:6rem; margin-bottom:1.5rem; }
+        .hero-service h1 { font-size:4rem; font-weight:900; margin-bottom:1.5rem; }
+        .hero-service p { font-size:1.3rem; color:rgba(255,255,255,0.9); max-width:800px; margin:0 auto 2rem; }
+        .hero-badges { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+        .badge { background:rgba(255,255,255,0.1); padding:0.8rem 1.5rem; border-radius:50px; font-size:0.95rem; border:1px solid rgba(212,175,55,0.3); }
+        
+        .section { padding:8rem 3rem; max-width:1400px; margin:0 auto; }
+        .section-header { text-align:center; margin-bottom:5rem; }
+        .section-label { color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.15rem; font-size:0.9rem; margin-bottom:1rem; }
+        .section-title { font-size:3rem; font-weight:900; color:var(--dark); margin-bottom:1.5rem; }
+        .section-subtitle { font-size:1.2rem; color:var(--gray); max-width:700px; margin:0 auto; }
+        
+        .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3rem; }
+        .service-card { background:#fff; padding:3rem; border-radius:25px; box-shadow:0 10px 50px rgba(0,0,0,0.08); transition:all 0.3s; border-top:4px solid var(--gold); }
+        .service-card:hover { transform:translateY(-10px); box-shadow:0 20px 70px rgba(0,0,0,0.12); }
+        .service-icon { font-size:4rem; margin-bottom:1.5rem; }
+        .service-card h3 { font-size:2rem; font-weight:800; color:var(--dark); margin-bottom:1rem; }
+        .service-card p { color:var(--gray); line-height:1.8; margin-bottom:1.5rem; font-size:1.05rem; }
+        .service-card ul { list-style:none; }
+        .service-card li { padding:0.6rem 0; padding-left:2rem; position:relative; color:var(--gray); }
+        .service-card li::before { content:'✓'; position:absolute; left:0; color:var(--gold); font-weight:900; font-size:1.2rem; }
+        
+        .special-section { background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%); padding:8rem 3rem; color:#fff; }
+        .special-content { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+        .special-left h2 { font-size:3rem; font-weight:900; margin-bottom:1.5rem; }
+        .special-left p { font-size:1.2rem; line-height:1.8; margin-bottom:1.5rem; color:rgba(255,255,255,0.95); }
+        .special-box { background:rgba(255,255,255,0.15); padding:2.5rem; border-radius:20px; backdrop-filter:blur(10px); border:2px solid rgba(255,255,255,0.2); }
+        .special-box h3 { color:#fbbf24; font-size:1.8rem; margin-bottom:1.5rem; }
+        .special-box ul { list-style:none; }
+        .special-box li { padding:0.8rem 0; padding-left:2rem; position:relative; font-size:1.05rem; }
+        .special-box li::before { content:'✓'; position:absolute; left:0; color:#fbbf24; font-weight:900; font-size:1.3rem; }
+        
+        .preise { background:var(--light); }
+        .preis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; margin-top:4rem; }
+        .preis-card { background:#fff; padding:3rem 2.5rem; border-radius:25px; box-shadow:0 10px 40px rgba(0,0,0,0.08); text-align:center; transition:all 0.3s; }
+        .preis-card:hover { transform:translateY(-10px); }
+        .preis-card h3 { font-size:1.8rem; color:var(--dark); margin-bottom:1rem; }
+        .preis-card .price { font-size:3rem; font-weight:900; color:var(--gold); margin:1.5rem 0; }
+        .preis-card .price span { font-size:1.2rem; font-weight:400; color:var(--gray); }
+        .preis-card ul { list-style:none; text-align:left; }
+        .preis-card li { padding:0.6rem 0; padding-left:2rem; position:relative; }
+        .preis-card li::before { content:'✓'; position:absolute; left:0; color:var(--gold); font-weight:900; }
+        
+        .prozess { background:#fff; }
+        .prozess-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:4rem; }
+        .prozess-step { text-align:center; padding:2rem; }
+        .prozess-number { width:60px; height:60px; background:var(--gold); color:var(--dark); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900; margin:0 auto 1.5rem; }
+        .prozess-step h3 { font-size:1.3rem; color:var(--dark); margin-bottom:1rem; }
+        .prozess-step p { color:var(--gray); line-height:1.8; }
+        
+        .faq { background:var(--light); }
+        .faq-list { max-width:900px; margin:4rem auto 0; }
+        .faq-item { background:#fff; padding:2rem; border-radius:15px; margin-bottom:1.5rem; border-left:4px solid var(--gold); }
+        .faq-item h3 { color:var(--dark); font-size:1.3rem; margin-bottom:1rem; }
+        .faq-item p { color:var(--gray); line-height:1.8; }
+        
+        .cta-section { background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%); padding:8rem 3rem; text-align:center; color:#fff; }
+        .cta-section h2 { font-size:3.5rem; font-weight:900; margin-bottom:1.5rem; }
+        .cta-section p { font-size:1.3rem; margin-bottom:3rem; color:rgba(255,255,255,0.8); }
+        .cta-btn { display:inline-block; background:linear-gradient(135deg,var(--gold) 0%,#F4D03F 100%); color:var(--dark); padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:700; font-size:1.1rem; transition:all 0.3s; }
+        .cta-btn:hover { transform:translateY(-3px); }
+        
+        footer { background:var(--dark); color:rgba(255,255,255,0.8); padding:5rem 3rem 2rem; }
+        .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:3rem; }
+        .footer-section h3 { color:var(--gold); margin-bottom:1.5rem; }
+        .footer-section ul { list-style:none; }
+        .footer-section ul li { margin-bottom:0.8rem; }
+        .footer-section a { color:rgba(255,255,255,0.8); text-decoration:none; }
+        .footer-section a:hover { color:var(--gold); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:rgba(255,255,255,0.6); }
+        
+        @media (max-width:1024px) { .services-grid, .special-content { grid-template-columns:1fr; } .preis-grid, .prozess-grid { grid-template-columns:repeat(2,1fr); } }
+        @media (max-width:768px) { .nav-links { display:none; } .hero-service h1 { font-size:2.5rem; } .preis-grid, .prozess-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-shield">P&N</div>
+                <div><div class="logo-text">P&N GEBÄUDESERVICE</div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="leistungen.html">Leistungen</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <a href="angebot.html" class="cta-header">Angebot anfragen</a>
+        </nav>
+    </header>
+
+    <section class="hero-service">
+        <div class="hero-icon">🧹</div>
+        <h1>Gebäudereinigung</h1>
+        <p>Professionelle Reinigung für Büros, Praxen, Privathaushalte und Senioren. Zuverlässig, gründlich und mit hochwertigen Reinigungsmitteln.</p>
+        <div class="hero-badges">
+            <div class="badge">✓ Büroreinigung</div>
+            <div class="badge">✓ Praxisreinigung</div>
+            <div class="badge">✓ Privathaushalte</div>
+            <div class="badge">✓ Seniorenbetreuung</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-label">UNSERE REINIGUNGSLEISTUNGEN</div>
+            <h2 class="section-title">Für jeden Bedarf die richtige Lösung</h2>
+            <p class="section-subtitle">Von der regelmäßigen Unterhaltsreinigung bis zur intensiven Grundreinigung</p>
+        </div>
+        
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Büroreinigung</h3>
+                <p>Professionelle Reinigung Ihrer Büroräume für ein angenehmes Arbeitsumfeld. Flexibel wöchentlich, 14-tägig oder monatlich.</p>
+                <ul>
+                    <li>Böden saugen & wischen</li>
+                    <li>Schreibtische abstauben</li>
+                    <li>Papierkorb leeren</li>
+                    <li>Sanitäranlagen reinigen</li>
+                    <li>Küche/Teeküche säubern</li>
+                    <li>Fenster optional</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>Praxisreinigung</h3>
+                <p>Hygienische Reinigung für medizinische und therapeutische Praxen nach erhöhten Standards.</p>
+                <ul>
+                    <li>Desinfizierte Reinigung</li>
+                    <li>Behandlungsräume</li>
+                    <li>Wartebereich</li>
+                    <li>Sanitäre Anlagen</li>
+                    <li>Medizinische Standards</li>
+                    <li>Flexible Zeiten (abends)</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Privathaushalt</h3>
+                <p>Regelmäßige Haushaltsreinigung für mehr Freizeit und ein sauberes Zuhause.</p>
+                <ul>
+                    <li>Wöchentlich oder 14-tägig</li>
+                    <li>Staubsaugen & Wischen</li>
+                    <li>Bad & Küche gründlich</li>
+                    <li>Staubwischen</li>
+                    <li>Fenster optional</li>
+                    <li>Individuelle Wünsche</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Grundreinigung</h3>
+                <p>Intensive Tiefenreinigung nach Renovierung, Umzug oder bei starker Verschmutzung.</p>
+                <ul>
+                    <li>Komplette Tiefenreinigung</li>
+                    <li>Nach Bau/Renovierung</li>
+                    <li>Umzugsreinigung</li>
+                    <li>Fenster innen & außen</li>
+                    <li>Teppichreinigung</li>
+                    <li>Abschlussreinigung</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="special-section">
+        <div class="special-content">
+            <div class="special-left">
+                <h2>👴👵 Seniorenbetreuung - Haushaltsreinigung</h2>
+                <p>Wir unterstützen ältere Menschen bei der Haushaltsreinigung - professionell, zuverlässig und mit Herz.</p>
+                <p><strong>Wichtig:</strong> Wir bieten <u>ausschließlich Reinigungsleistungen</u> an, keine medizinische oder pflegerische Betreuung.</p>
+                <p style="margin-top:2rem; padding:1.5rem; background:rgba(255,255,255,0.2); border-radius:15px; border:2px solid #fbbf24;">
+                    <strong style="font-size:1.3rem; color:#fbbf24;">💡 Kassenabrechnung möglich:</strong><br><br>
+                    Sie rechnen <strong>direkt mit uns ab</strong> und können die Rechnung dann bei Ihrer Krankenkasse einreichen. Viele Krankenkassen übernehmen einen Teil der Kosten für hauswirtschaftliche Hilfen.
+                </p>
+            </div>
+            <div class="special-box">
+                <h3>Was wir für Sie tun:</h3>
+                <ul>
+                    <li>Regelmäßige Wohnungsreinigung</li>
+                    <li>Böden saugen & wischen</li>
+                    <li>Küche & Bad gründlich</li>
+                    <li>Staubwischen & aufräumen</li>
+                    <li>Fenster putzen</li>
+                    <li>Müll entsorgen</li>
+                    <li>Wäsche waschen (optional)</li>
+                    <li>Einkauf begleiten (optional)</li>
+                </ul>
+                <p style="margin-top:2rem; padding-top:2rem; border-top:2px solid rgba(255,255,255,0.2); font-size:0.95rem;">
+                    <strong>Hinweis:</strong> Keine medizinische Pflege oder Behandlung. Reine Haushaltsdienstleistung nach § 38 SGB V.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section preise">
+        <div class="section-header">
+            <div class="section-label">PREISBEISPIELE</div>
+            <h2 class="section-title">Transparente Kalkulation</h2>
+            <p class="section-subtitle">Alle Preise individuell nach Fläche, Zustand und Häufigkeit kalkuliert</p>
+        </div>
+        
+        <div class="preis-grid">
+            
+            <div class="preis-card">
+                <h3>Büroreinigung</h3>
+                <div class="price">180€ <span>/Monat</span></div>
+                <p style="color:var(--gray); margin-bottom:2rem;">Beispiel: 80m² Büro</p>
+                <ul>
+                    <li>Wöchentlich (4× pro Monat)</li>
+                    <li>Böden & Oberflächen</li>
+                    <li>Sanitär & Küche</li>
+                    <li>Papierkorb leeren</li>
+                    <li>Flexibel nach Feierabend</li>
+                </ul>
+            </div>
+            
+            <div class="preis-card">
+                <h3>Praxisreinigung</h3>
+                <div class="price">250€ <span>/Monat</span></div>
+                <p style="color:var(--gray); margin-bottom:2rem;">Beispiel: 100m² Arztpraxis</p>
+                <ul>
+                    <li>2× pro Woche</li>
+                    <li>Desinfizierte Reinigung</li>
+                    <li>Behandlungsräume</li>
+                    <li>Wartebereich</li>
+                    <li>Medizinische Standards</li>
+                </ul>
+            </div>
+            
+            <div class="preis-card">
+                <h3>Grundreinigung</h3>
+                <div class="price">666€</div>
+                <p style="color:var(--gray); margin-bottom:2rem;">Beispiel: 52m² Wohnung</p>
+                <ul>
+                    <li>Einmalige Tiefenreinigung</li>
+                    <li>Alle Räume gründlich</li>
+                    <li>Küche & Bad intensiv</li>
+                    <li>Fenster innen & außen</li>
+                    <li>Nach Renovierung ideal</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div style="text-align:center; margin-top:4rem; padding:2.5rem; background:#fff; border-radius:20px; max-width:800px; margin-left:auto; margin-right:auto; border-left:4px solid var(--gold);">
+            <h3 style="color:var(--gold); margin-bottom:1.5rem; font-size:1.8rem;">💡 Individuelle Kalkulation</h3>
+            <p style="font-size:1.1rem; color:var(--gray); line-height:1.8;">
+                <strong>Jedes Objekt ist anders.</strong><br>
+                Wir kalkulieren nach: Quadratmeter, Verschmutzungsgrad, Häufigkeit, und besonderen Anforderungen.<br><br>
+                <strong>Fordern Sie jetzt Ihr persönliches Angebot an!</strong>
+            </p>
+        </div>
+    </section>
+
+    <section class="section prozess">
+        <div class="section-header">
+            <div class="section-label">SO FUNKTIONIERT ES</div>
+            <h2 class="section-title">Einfacher Ablauf</h2>
+        </div>
+        
+        <div class="prozess-grid">
+            <div class="prozess-step">
+                <div class="prozess-number">1</div>
+                <h3>Anfrage</h3>
+                <p>Sie kontaktieren uns per E-Mail, WhatsApp oder Formular mit Details zu Ihrer Immobilie.</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">2</div>
+                <h3>Besichtigung</h3>
+                <p>Wir besichtigen Ihre Räumlichkeiten (kostenlos) und besprechen Ihre Wünsche.</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">3</div>
+                <h3>Angebot</h3>
+                <p>Sie erhalten ein transparentes Angebot mit allen Leistungen und Preisen.</p>
+            </div>
+            
+            <div class="prozess-step">
+                <div class="prozess-number">4</div>
+                <h3>Start</h3>
+                <p>Nach Auftragserteilung starten wir zuverlässig zu den vereinbarten Terminen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq">
+        <div class="section-header">
+            <div class="section-label">HÄUFIGE FRAGEN</div>
+            <h2 class="section-title">Ihre Fragen - Unsere Antworten</h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Bringen Sie eigene Reinigungsmittel mit?</h3>
+                <p>Ja, wir arbeiten mit professionellen, hochwertigen Reinigungsmitteln. Diese sind im Preis inbegriffen.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Wann wird gereinigt - während oder nach Arbeitszeit?</h3>
+                <p>Bei Büros und Praxen bevorzugt nach Feierabend oder am Wochenende. Bei Privathaushalten nach Absprache, auch tagsüber möglich.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Wie funktioniert die Seniorenbetreuung mit Kassenabrechnung?</h3>
+                <p>Wir stellen Ihnen eine Rechnung aus. Diese können Sie bei Ihrer Krankenkasse einreichen. Viele Kassen übernehmen Teile der Kosten für hauswirtschaftliche Hilfen nach § 38 SGB V. Wir beraten Sie gerne.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Was ist der Unterschied zwischen Unterhalts- und Grundreinigung?</h3>
+                <p><strong>Unterhaltsreinigung:</strong> Regelmäßige Standard-Reinigung (wöchentlich/14-tägig).<br><strong>Grundreinigung:</strong> Intensive Tiefenreinigung einmalig oder nach Bedarf.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Kann ich einzelne Leistungen buchen?</h3>
+                <p>Ja! Sie können z.B. nur Fensterreinigung oder nur Grundreinigung buchen. Wir passen uns Ihren Bedürfnissen an.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Was passiert, wenn ich mit der Reinigung unzufrieden bin?</h3>
+                <p>Kontaktieren Sie uns innerhalb von 24 Stunden. Wir kommen nochmals vorbei und bessern kostenlos nach - garantiert!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Bereit für professionelle Reinigung?</h2>
+        <p>Fordern Sie jetzt Ihr individuelles Angebot an</p>
+        <a href="angebot.html" class="cta-btn">Jetzt Angebot anfragen →</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>P&N Gebäudeservice</h3>
+                <p>Martinstraße 2a<br>68642 Bürstadt</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +49 174 7021338<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6dfd8d0d9f6c6d89bd1d7c4c2d3d89bc3d8d29bc4d3dfd8dfd1c3d8d198d5d9db">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="agb.html">AGB</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Service</h3>
+                <ul>
+                    <li><a href="leistungen.html">Leistungen</a></li>
+                    <li><a href="angebot.html">Angebot</a></li>
+                </ul>
+            </div>
+        </di
